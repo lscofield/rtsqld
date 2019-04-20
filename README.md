@@ -1,5 +1,6 @@
 # rtsqld
 Programa para practicar todas las consultas sql de los ejercicios de las sesiones de practicas.
+
 IMPORTANTE:
 Para que pueda funcionar el programa debes descargar el ejecutable junto con el fichero config.json, 
 en este fichero debes escribir tal y como indica, todos los datos necesarios para que se pueda conectar
@@ -17,3 +18,5 @@ El mecanismo del programa es el siguiente:
 - Si la query está bien hecha te indicará que la respuesta es correcta y si no pues que no lo es.
 - Puedes saltar una pregunta en cualquier momento y se te mostrará otra aleatoria.
 - Puedes practicar tantas veces que quieras.
+
+El ejecutable .jar junto con el config.json se encuentran en la raiza del repositorio.
