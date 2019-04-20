@@ -22,4 +22,5 @@ El mecanismo del programa es el siguiente:
 - Puedes practicar tantas veces que quieras.
 
 El ejecutable .jar junto con el config.json se encuentran en la raiza del repositorio.
+
 Por ultimo si detectas algún problema en el programa avisa y se arreglará.
