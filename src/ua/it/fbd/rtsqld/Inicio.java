@@ -56,7 +56,7 @@ public class Inicio {
     private String database = "tiendaonline";
     private String username = "";
     private String pass = "";
-    private String host = "bbdd.dlsi.ua.es";
+    private String host = "";
     private String console = "";
     private ArrayList<String> examenes = new ArrayList<>();
 
