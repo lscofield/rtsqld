@@ -1,5 +1,5 @@
 # rtsqld
-rtsqls (Road To SQL-D) es un programa para practicar todas las consultas sql de los ejercicios de las sesiones de practicas.
+rtsqld (Road To SQL-D) es un programa para practicar todas las consultas sql de los ejercicios de las sesiones de practicas.
 
 IMPORTANTE:
 Para que pueda funcionar el programa debes descargar el ejecutable junto con el fichero config.json, 
