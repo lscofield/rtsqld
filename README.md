@@ -14,7 +14,7 @@ NOTA: Todos los datos que escribas en el fichero config.json solo los usa el pro
 El mecanismo del programa es el siguiente:
 - Eliges una sesión, se abre la sesión, te conectas a la db (si no tienes el puerto abierto, no se conectará)
 - Abres el puerto (si es necesario) y luego te conectas.
-- Te mostrarán preguntas aleatorias, tienes 10 minutos para escribir la query que te piden.
+- Te mostrarán preguntas aleatorias, tienes 10 minutos para escribir la query que te piden en una pregunta.
 - Si la query está bien hecha te indicará que la respuesta es correcta y si no pues que no lo es.
 - A parte tamién te mostrará los resultados de tu query en formato tabla.
 - Igualmente tienes disponible en la consola del programa todo el historial de lo que haces.
