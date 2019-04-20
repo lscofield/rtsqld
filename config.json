@@ -1,0 +1,6 @@
+﻿{
+  "servidor": "Servidor UA de la db",
+  "db":"tiendaonline",
+  "usuario": "Tu usuario de la db",
+  "password" : "Tu contraseña la db"
+}
