@@ -16,6 +16,8 @@ El mecanismo del programa es el siguiente:
 - Abres el puerto (si es necesario) y luego te conectas.
 - Te mostrarán preguntas aleatorias, tienes 10 minutos para escribir la query que te piden.
 - Si la query está bien hecha te indicará que la respuesta es correcta y si no pues que no lo es.
+- A parte tamién te mostrará los resultados de tu query en formato tabla.
+- Igualmente tienes disponible en la consola del programa todo el historial de lo que haces.
 - Puedes saltar una pregunta en cualquier momento y se te mostrará otra aleatoria.
 - Puedes practicar tantas veces que quieras.
 
