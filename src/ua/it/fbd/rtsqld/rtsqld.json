@@ -1,0 +1,1805 @@
+[
+
+    {
+        "titulo": "Sesión 1 (T02)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "Obtén toda la información de los usuarios",
+                "queries": [
+                    "select * from usuario;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "Lista los email y nombre y apellidos de los usuarios",
+                "queries": [
+                    "select email,nombre,apellidos from usuario;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "Lista los email y nombre y apellidos de los usuarios ordenados por email",
+                "queries": [
+                    "select email,nombre,apellidos from usuario order by email;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Lista los email y nombre y apellidos de los usuarios ordenados por apellidos y nombre",
+                "queries": [
+                    "select email,nombre,apellidos from usuario order by apellidos,nombre;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "Lista los email y nombre y apellidos de los usuarios ordenados ascendentemente por apellidos y descendentemente por nombre",
+                "queries": [
+                    "select email,nombre,apellidos from usuario order by apellidos,nombre desc;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Lista los email y nombre y apellidos de los usuarios en orden descendente de apellidos y nombre",
+                "queries": [
+                    "select email,nombre,apellidos from usuario order by apellidos desc, nombre desc;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "011",
+                "pregunta": "Marcas",
+                "queries": [
+                    "select * from marca;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "013",
+                "pregunta": "Código de los artículos que pertenecen a algún pack.",
+                "queries": [
+                    "select articulo from ptienea;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "016",
+                "pregunta": "Código e importe de los artículos solicitados en el pedido número 1.",
+                "queries": [
+                    "select articulo,importe from linped where numpedido=1;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "023",
+                "pregunta": "Panel de los televisores de 21 pulgadas o menos de pantalla, eliminando duplicados.",
+                "queries": [
+                    "select distinct panel from tv where pantalla <= 21;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "024",
+                "pregunta": "Código, nombre, marca y pvp de los artículos que tienen ese precio entre 350 y 450.",
+                "queries": [
+                    "select cod, nombre, marca, pvp from articulo where pvp >=350 and pvp <= 450;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "025",
+                "pregunta": "Código, nombre y precio de venta al público de los artículos que no tienen marca.",
+                "queries": [
+                    "select cod,nombre,pvp from articulo where marca is null;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "026",
+                "pregunta": "Código, nombre y precio de venta al público de los artículos que no tienen precio de venta al público y son de marca Sigma.",
+                "queries": [
+                    "select cod,nombre,pvp from articulo where pvp is null and marca='Sigma';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "027",
+                "pregunta": "Email, nombre, apellidos y teléfono de los usuarios que se llaman Santiago, Wenceslao o Sergio.",
+                "queries": [
+                    "select email,nombre,apellidos,telefono from usuario where nombre = 'SANTIAGO' OR nombre = 'WENCESLAO' OR nombre = 'SERGIO';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "027",
+                "pregunta": "Email, nombre, apellidos y teléfono de los usuarios que se llaman Santiago, Wenceslao o Sergio y que sí tienen teléfono.",
+                "queries": [
+                    "select email,nombre,apellidos,telefono from usuario where (nombre = 'SANTIAGO' OR nombre = 'WENCESLAO' OR nombre = 'SERGIO') and telefono is not null;"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 2 (T02B)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Código, nombre y pvp de los artículos de menos de 100?; la salida ha de ser código, nombre, 'tiene el precio de, pvp.",
+                "queries": [
+                    "select cod,nombre,'tiene el precio de',pvp from articulo where pvp < 100;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "007",
+                "pregunta": "DNI,email,nombre y apellidos de los usuarios de la provincia de Asturias (código 33).",
+                "queries": [
+                    "select dni,email,nombre,apellidos from usuario where provincia='33';",
+                    "select dni,email,u.nombre,apellidos from usuario u, provincia pv where u.provincia=codp and pv.nombre='Asturias';"
+                ],
+                "notas": [
+                    "El código de las localidades y de las provincias es texto, no número."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "008",
+                "pregunta": "Toda la información (código y nombre) de las provincias de las que se tienen usuarios",
+                "queries": [
+                    "select pv.* from usuario u, provincia pv where u.provincia=codp;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "009",
+                "pregunta": "Toda la información (código y nombre) de las provincias de las que se tienen usuarios, eliminando duplicados y ordenando por nombre",
+                "queries": [
+                    "select distinct pv.* from usuario u, provincia pv where u.provincia=codp order by pv.nombre;",
+                    "select distinct pv.* from usuario u, provincia pv where u.provincia=codp order by 2;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "010",
+                "pregunta": "Email de los usuarios de la provincia de Murcia que no tienen teléfono, acompañado en la salida por un mensaje que diga 'No tiene teléfono'",
+                "queries": [
+                    "select email,'No tiene teléfono' from usuario u, provincia pv where u.provincia=codp and pv.nombre = 'Murcia' and telefono is null;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "012",
+                "pregunta": "Artículos que no tienen marca",
+                "queries": [
+                    "select * from articulo where marca is null;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "014",
+                "pregunta": "Número de pack, nombre y precio del mismo.",
+                "queries": [
+                    "select p.cod,nombre,pvp from articulo a, pack p where a.cod = p.cod;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "015",
+                "pregunta": "Código, nombre y marca de los artículos que pertenecen a algún pack.",
+                "queries": [
+                    "select articulo,nombre,marca from articulo, ptienea where cod = articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "017",
+                "pregunta": "Código, nombre, marca, pvp e importe de los artículos solicitados en el pedido número 1.",
+                "queries": [
+                    "select articulo,nombre,marca,pvp,importe from linped l, articulo a where numpedido=1 and a.cod=l.articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "018",
+                "pregunta": "Código, nombre, marca, pvp e importe de los artículos solicitados en el pedido número 1 que sean televisores.",
+                "queries": [
+                    "select articulo,nombre,marca,pvp,importe from linped l, articulo a, tv t where numpedido=1 and a.cod=l.articulo and a.cod=t.cod;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "019",
+                "pregunta": "Fecha y usuario del pedido, código, nombre, marca, pvp e importe de los artículos solicitados en el pedido número 1 que sean televisores.",
+                "queries": [
+                    "select fecha,usuario,articulo,nombre,marca,pvp,importe from linped l, articulo a, tv t, pedido p where l.numpedido=1 and l.numpedido = p.numpedido and a.cod=l.articulo and a.cod=t.cod;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "022",
+                "pregunta": "Código, sensor y pantalla de las cámaras, si es que 'pantalla' tiene valor, ordenado por código descendentemente.",
+                "queries": [
+                    "select cod,sensor,pantalla from camara where pantalla is not null order by cod desc;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "025",
+                "pregunta": "Número de pack, nombre y precio del mismo, y código, nombre y pvp de los artículos que pertenezcan a ellos.",
+                "queries": [
+                    "select a1.cod, a1.nombre, a1.pvp, a2.cod art2, a2.nombre nombre2, a2.pvp pvp2  from articulo a1, ptienea pp, articulo a2 where pp.pack = a1.cod and pp.articulo = a2.cod;"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 2 (T04)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "Toda la información de los pedidos anteriores a octubre de 2010.",
+                "queries": [
+                    "select * from pedido where fecha < '2010-10-01';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "Toda la información de los pedidos posteriores a agosto de 2010.",
+                "queries": [
+                    "select * from pedido where fecha > '2010-08-31';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "Toda la información de los pedidos realizados entre agosto y octubre de 2010.",
+                "queries": [
+                    "select * from pedido where fecha > '2010-07-31' and fecha < '2010-11-01';",
+                    "select * from pedido where fecha between '2010-08-01' and '2010-10-30';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Toda la información de los pedidos realizados el 3 de marzo o el 27 de octubre de 2010.",
+                "queries": [
+                    "select * from pedido where fecha = '2010-03-03' or fecha = '2010-10-27';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "Toda la información de los pedidos realizados el 3 de marzo o el 27 de octubre de 2010, y que han sido realizados por usuarios del dominio 'cazurren'.",
+                "queries": [
+                    "select * from pedido where (fecha = '2010-03-03' or fecha = '2010-10-27') and usuario like '%@cazurren.%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "012",
+                "pregunta": "Códigos de articulos solicitados en 2010, eliminando duplicados y ordenado ascendentemente.",
+                "queries": [
+                    "select distinct articulo from linped l, pedido p where l.numpedido=p.numpedido and year(fecha)=2010 order by articulo;",
+                    "select distinct articulo from linped l, pedido p where l.numpedido=p.numpedido and fecha between '2010-01-01' and '2010-12-31' order by articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "013",
+                "pregunta": "Códigos de articulos solicitados en pedidos de marzo de 2010, eliminando duplicados y ordenado ascendentemente.",
+                "queries": [
+                    "select distinct articulo from linped l, pedido p where l.numpedido=p.numpedido and month(fecha)=3 and year(fecha)=2010 order by articulo;",
+                    "select distinct articulo from linped l, pedido p where l.numpedido=p.numpedido and fecha between '2010-03-01' and '2010-03-31' order by articulo;"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 3 (T03)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "Código y nombre de los articulos con un precio entre 400 y 500 euros.",
+                "queries": [
+                    "select cod,nombre from articulo where pvp between 400 and 500;",
+                    "select cod,nombre from articulo where pvp >= 400 and pvp <= 500;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "Código y nombre de los articulos con precio 415, 129, 1259 o 3995.",
+                "queries": [
+                    "select cod,nombre from articulo where pvp in (415, 129, 1259, 3995);",
+                    "select cod,nombre from articulo where pvp = 415 or pvp = 129 or pvp = 1259 or pvp = 3995;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "Código y nombre de las provincias que no son Huelva, Sevilla, Asturias ni Barcelona.",
+                "queries": [
+                    "select codp,nombre from provincia where nombre not in ('huelva', 'sevilla', 'asturias', 'barcelona');",
+                    "select codp,nombre from provincia where nombre != 'huelva' and nombre != 'sevilla' and nombre != 'asturias'and nombre != 'barcelona';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Código de la provincia Alicante.",
+                "queries": [
+                    "select codp from provincia where nombre like 'Alicante%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "Obtener el código, nombre y pvp de los articulos cuya marca comience por S.",
+                "queries": [
+                    "select cod, nombre, pvp from articulo where marca like 'S%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Información sobre los usuarios cuyo email es de la eps.",
+                "queries": [
+                    "select * from usuario where email like '%@eps.%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "007",
+                "pregunta": "Código, nombre y resolución de los televisores cuya pantalla no esté entre 22 y 42.",
+                "queries": [
+                    "select a.cod, nombre, resolucion from articulo a, tv where a.cod=tv.cod and pantalla not between 22 and 42;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "008",
+                "pregunta": "Código y nombre de los televisores cuyo panel sea tipo LED y su precio no supere los 1000 euros.",
+                "queries": [
+                    "select t.cod, nombre from tv t, articulo a where t.cod=a.cod and panel like '%LED%' and pvp<=1000;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "009",
+                "pregunta": "Email de los usuarios cuyo código postal no sea 02012, 02018 o 02032.",
+                "queries": [
+                    "select email from usuario where codpos not in ('02012','02018','02032');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "010",
+                "pregunta": "Código y nombre de los packs de los que se conoce qué articulos los componen, eliminando duplicados.",
+                "queries": [
+                    "select distinct cod, nombre from  articulo, ptienea where pack=cod;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "011",
+                "pregunta": "¿Hay algún artículo en cesta que esté descatalogado?",
+                "queries": [
+                    "select c.articulo,c.usuario,c.fecha,s.articulo stock,s.disponible,s.entrega from cesta c, stock s where c.articulo=s.articulo and entrega='descatalogado';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "012",
+                "pregunta": "Código, nombre y pvp de las cámaras de tipo compacta.",
+                "queries": [
+                    "select a.cod, nombre, pvp from articulo a, camara c where a.cod=c.cod and tipo like'%compacta%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "013",
+                "pregunta": "Código, nombre y diferencia entre pvp e importe de los articulos que hayan sido solicitados en algún pedido a un importe distinto de su precio de venta al público.",
+                "queries": [
+                    "select cod, nombre, pvp-importe from articulo, linped where cod=articulo and pvp<>importe;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "014",
+                "pregunta": "Número de pedido,fecha y nombre y apellidos del usuario que solicita el pedido, para aquellos pedidos solicitados por algún usuario de apellido MARTINEZ.",
+                "queries": [
+                    "select numpedido, fecha, nombre, apellidos from pedido, usuario where usuario=email and apellidos like'%MARTINEZ%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "016",
+                "pregunta": "Nombre, marca y resolucion de las cámaras que nunca se han solicitado.",
+                "queries": [
+                    "select nombre, marca, resolucion from articulo a, camara c where a.cod=c.cod and c.cod not in (select articulo from linped);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "017",
+                "pregunta": "Código, nombre, tipo y marca de las cámaras de marca Nikon, LG o Sigma.",
+                "queries": [
+                    "select a.cod, nombre, tipo, marca from articulo a, camara c where a.cod=c.cod and marca in ('NIKON','LG','SIGMA');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "019",
+                "pregunta": "Marcas de las que no existe ningún televisor en nuestra base de datos.",
+                "queries": [
+                    "select marca from marca where marca not in (select marca from articulo a, tv t where a.cod=t.cod);",
+                    "SELECT marca FROM marca m WHERE NOT EXISTS (SELECT 1 FROM articulo a, tv t where a.cod=t.cod and a.marca=m.marca);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "021",
+                "pregunta": "Nombre de los artículos cuyo nombre contenga la palabra EOS.",
+                "queries": [
+                    "select nombre from articulo where nombre like '%EOS%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "022",
+                "pregunta": "ipo y focal de los objetivos que se monten en una cámara Canon sea cual sea el modelo.",
+                "queries": [
+                    "select tipo, focaL from objetivo where montura like 'Canon%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "023",
+                "pregunta": "Nombre de los artículos cuyo precio sea mayor de 100 pero menor o igual que 200.",
+                "queries": [
+                    "select nombre from articulo where pvp>100 and pvp<=200;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "024",
+                "pregunta": "Nombre de los artículos cuyo precio sea mayor o igual que 100 pero menor o igual que 300.",
+                "queries": [
+                    "select nombre from articulo where pvp between 100 and 300;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "025",
+                "pregunta": "Nombre de las cámaras cuya marca no comience por la letra S.",
+                "queries": [
+                    "select nombre from articulo a, camara c where a.cod=c.cod and marca not like 'S%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "026",
+                "pregunta": "Dirección de correo de los usuarios cuyo dni termine en B, L o P.",
+                "queries": [
+                    "select email from usuario where dni like '%B' or dni like '%L' or dni like '%P';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "027",
+                "pregunta": "Código de los televisores que tengan un panel LCD o LED.",
+                "queries": [
+                    "select cod from tv where panel like '%LCD%' or panel like '%LED%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "029",
+                "pregunta": "Nombre de los televisores que tengan una pantalla mayor que el televisor de código A0686.",
+                "queries": [
+                    "select nombre from articulo a, tv t where a.cod=t.cod and pantalla > (select pantalla from tv where cod ='A0686');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "034",
+                "pregunta": "Nombre de las provincias en las que viven usuarios que hayan realizado algún pedido, eliminando duplicados.",
+                "queries": [
+                    "select distinct p.nombre from usuario u, provincia p, pedido pe where u.provincia=p.codp and u.email=pe.usuario;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "035",
+                "pregunta": "Nombre de los artículos que hayan sido seleccionados en alguna cesta con fecha entre 01.11.2010 y 31.12.2010",
+                "queries": [
+                    "select distinct nombre from articulo a, cesta c where a.cod=c.articulo and c.fecha between '2010-11-01' and '2010-12-31';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "036",
+                "pregunta": "Nombre de los artículos que hayan sido seleccionados en alguna cesta por usuarios de las provincias de Valencia o Alicante.",
+                "queries": [
+                    "select distinct a.nombre from articulo a, cesta c, usuario u where a.cod=c.articulo and c.usuario=u.email and u.provincia in (select codp from provincia where nombre like 'Alicante%' or nombre like 'Valencia%');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "037",
+                "pregunta": "Número identificador de los pedidos en los que se han incluido artículos a un importe menor que su pvp, eliminando duplicados.",
+                "queries": [
+                    "select distinct numpedido from linped l, articulo a where l.articulo=a.cod and l.importe < a.pvp;"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 4 (T05)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "Número de pedido e identificador, apellidos y nombre del usuario que realiza el pedido (usando join).",
+                "queries": [
+                    "select numpedido,usuario,apellidos,nombre from pedido join usuario on (usuario=email);",
+                    "select numpedido,usuario,apellidos,nombre from pedido, usuario where usuario=email;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "Número de pedido e identificador, apellidos y nombre del usuario que realiza el pedido, y nombre de la localidad del usuario (usando join).",
+                "queries": [
+                    "select numpedido,usuario,apellidos,u.nombre nomusu,l.pueblo from pedido join usuario u on (usuario=email) join localidad l on (l.codm=u.pueblo and l.provincia=u.provincia);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "Número de pedido e identificador, apellidos y nombre del usuario que realiza el pedido, nombre de la localidad y nombre de la provincia del usuario (usando join).",
+                "queries": [
+                    "select numpedido,usuario,apellidos,u.nombre nomusu,l.pueblo,p.nombre from pedido join usuario u on (usuario=email) join localidad l on (l.codm=u.pueblo and l.provincia=u.provincia) join provincia p on (l.provincia=codp);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Nombre de provincia y nombre de localidad ordenados por provincia y localidad (usando join) de las provincias de Aragón y de localidades cuyo nombre comience por 'B'",
+                "queries": [
+                    "select nombre,pueblo from provincia join localidad on (provincia=codp) where nombre in ('huesca','zaragoza','teruel') and pueblo like 'B%'  order by nombre,pueblo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "Apellidos y nombre de los usuarios y, si tienen, pedido que han realizado.",
+                "queries": [
+                    "select apellidos,nombre,numpedido from usuario left join pedido on (email=usuario);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Código y nombre de los artículos, si además es una cámara, mostrar también la resolución y el sensor.",
+                "queries": [
+                    "select a.cod, nombre, resolucion, sensor from articulo a left join camara c on (a.cod = c.cod);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "007",
+                "pregunta": "Código, nombre y pvp de los artículos, si además se trata de un objetivo mostrar todos sus datos.",
+                "queries": [
+                    "select a.cod artcod, nombre, pvp, o.* from articulo a left join objetivo o on (a.cod = o.cod);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "008",
+                "pregunta": "Muestra las cestas del año 2010 junto con el nombre del artículo al que referencia y su precio de venta al público.",
+                "queries": [
+                    "select c.*, nombre, pvp from cesta c join articulo on (cod=articulo) where year(fecha) = 2010;",
+                    "select c.*, nombre, pvp from cesta c join articulo on (cod=articulo and year(fecha) = 2010);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "009",
+                "pregunta": "Muestra toda la información de los artículos. Si alguno aparece en una cesta del año 2010 muestra esta información.",
+                "queries": [
+                    "select a.*, c.* from articulo a left join cesta c on (articulo=cod and year(fecha) = 2010);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "010",
+                "pregunta": "Disponibilidad en el stock de cada cámara junto con la resolución de todas las cámaras.",
+                "queries": [
+                    "select s.*, resolucion from stock s right join camara on (cod=articulo);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "011",
+                "pregunta": "Código y nombre de los artículos que no tienen marca.",
+                "queries": [
+                    "select cod, nombre from articulo where marca is null;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "012",
+                "pregunta": "Código, nombre y marca de todos los artículos, tengan o no marca.",
+                "queries": [
+                    "select cod, nombre, marca from articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "013",
+                "pregunta": "Código, nombre, marca y empresa responsable de la misma de todos los artículos. Si algún artículo no tiene marca debe aparecer en el listado con esta información vacía.",
+                "queries": [
+                    "select cod, nombre, a.marca, empresa from articulo a left join marca m on (a.marca = m.marca);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "014",
+                "pregunta": "Información de todos los usuarios de la comunidad valenciana cuyo nombre empiece por 'P' incluyendo la dirección de envío en caso de que la tenga.",
+                "queries": [
+                    "select u.*, d.calle dcalle,d.calle2 dcalle2,d.codpos dcodpos,d.pueblo dpueblo,d.provincia dprovincia from usuario u left join direnvio d on (d.email=u.email) where u.provincia in ('46','03','12') and u.nombre like 'P%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "014",
+                "pregunta": "Información de todos los usuarios de la comunidad valenciana cuyo nombre empiece por 'P' incluyendo la dirección de envío en caso de que la tenga.",
+                "queries": [
+                    "select u.*, d.calle dcalle,d.calle2 dcalle2,d.codpos dcodpos,d.pueblo dpueblo,d.provincia dprovincia from usuario u left join direnvio d on (d.email=u.email) where u.provincia in ('46','03','12') and u.nombre like 'P%';",
+                    "select u.*, d.* from usuario u join provincia p on (u.provincia = codp) left join direnvio d on (d.email=u.email) where (p.nombre like '%Alicante%' or p.nombre like '%Valencia%' or p.nombre like '%Castell%') and u.nombre like 'P%';"
+                ],
+                "notas": [
+                    "La forma más sencilla necesita conocer los códigos de provincia y, además, tener en cuenta que estos códigos son cadenas de caracteres.",
+                    "La forma alternativa utiliza el like para evitar problemas de comparación."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "015",
+                "pregunta": "Código y nombre de los artículos, y código de pack en el caso de que pertenezca a alguno.",
+                "queries": [
+                    "select cod, nombre, pack from articulo left join ptienea on (cod=articulo);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "016",
+                "pregunta": "Usuarios y pedidos que han realizado.",
+                "queries": [
+                    "select u.*, p.* from usuario u, pedido p where u.email=p.usuario;",
+                    "select * from usuario u join pedido p on (u.email=p.usuario);"
+                ],
+                "notas": [
+                    "Nótese que no se ha dicho ',...y, si tienen, pedidos que...'"
+                ]
+            },
+            {
+                "superada": false,
+                "num": "017",
+                "pregunta": "Información de aquellos usuarios de la comunidad valenciana (códigos 03, 12 y 46) cuyo nombre empiece por 'P' que tienen dirección de envío pero mostrando, a la derecha, todas las direcciones de envío de la base de datos.",
+                "queries": [
+                    "select u.*, d.calle dcalle,d.calle2 dcalle2,d.codpos dcodpos,d.pueblo dpueblo,d.provincia dprovincia from usuario u right join direnvio d on (d.email=u.email and u.provincia in ('46','03','12') and u.nombre like 'P%'); "
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 6 (T08)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "Obtener el importe total por línea para el pedido 1, en la salida aparecerá los campos numlinea, articulo y el campo calculado total.",
+                "queries": [
+                    "select linea, articulo, (importe*cantidad) total from linped where numPedido=1;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "Obtener la cantidad de provincias distintas de las que tenemos conocimiento de algún usuario.",
+                "queries": [
+                    "select count(distinct provincia) provincias from usuario;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "Cantidad de usuarios de nuestra BD.",
+                "queries": [
+                    "select count(*) usuarios from usuario;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Número de articulos con precio de venta al público mayor de 200 euros.",
+                "queries": [
+                    "select count(*) from articulo where pvp>200;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "Total en euros de la cesta del usuario 'bmm@agwab.com'.",
+                "queries": [
+                    "select sum(pvp) total from cesta, articulo where usuario='bmm@agwab.com' and articulo=cod;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Tamaño máximo de pantalla para las televisiones.",
+                "queries": [
+                    "select MAX(pantalla) maxPantalla from tv;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "007",
+                "pregunta": "Media de precios de venta al público distintos de los articulos, redondeada a dos decimales.",
+                "queries": [
+                    "select round(avg(distinct pvp),2) mediaventa from articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "008",
+                "pregunta": "Nombre y precio de los articulos con el mínimo stock disponible.",
+                "queries": [
+                    "select nombre,pvp from articulo,stock where cod=articulo and disponible = (select min(disponible) from stock);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "009",
+                "pregunta": "Número de pedido, fecha y nombre y apellidos del usuario de las lineas de pedido cuyo total en euros es el más alto.",
+                "queries": [
+                    "select p.numPedido,fecha,nombre,apellidos from pedido p,linped l,usuario u where p.usuario=email and p.numPedido=l.numPedido and (cantidad*importe)=(select max(cantidad*importe) from linped);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "010",
+                "pregunta": "Máximo, mínimo y media de importe de los artículos.",
+                "queries": [
+                    "select MAX(pvp) maxPvp, MIN(pvp) minPvp, AVG(pvp) mediaPvp from articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "011",
+                "pregunta": "Código, nombre, pvp y fecha de incorporación del artículo a la cesta más reciente.",
+                "queries": [
+                    "select cod, nombre, pvp, fecha from cesta, articulo where articulo=cod and fecha=(select MAX(fecha) from cesta);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "012",
+                "pregunta": "Cantidad de artículos que están descatalogados.",
+                "queries": [
+                    "select count(*) NumArtDescatalogados from stock where entrega='Descatalogado';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "013",
+                "pregunta": "Precio máximo del artículo en stock que será entregado próximamente.",
+                "queries": [
+                    "select max(pvp) from articulo, stock where cod=articulo and entrega='Próximamente';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "014",
+                "pregunta": "Nombre, código y disponible en stock para todos los artículos cuyo código acabe en 3, siendo ese disponible el mínimo de toda la tabla.",
+                "queries": [
+                    "select nombre, cod, disponible MinDisponible from stock, articulo where articulo=cod and cod like '%3' and disponible=(select MIN(disponible) from stock);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "015",
+                "pregunta": "Importe máximo, mínimo y medio de las líneas de pedido que incluyen el artículo 'Bravia KDL-32EX402'",
+                "queries": [
+                    "select MAX(importe) MaxPrecio, MIN(importe) MinPrecio, AVG(importe) PrecioMedio from linped l, articulo a where a.cod=l.articulo and a.nombre='Bravia KDL-32EX402';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "016",
+                "pregunta": "Cantidad total que se ha pedido de los artículos cuyo nombre empieza por 'UE22'.",
+                "queries": [
+                    "select SUM(cantidad) cantidadTotal from linped, articulo where articulo=cod and nombre like 'UE22%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "017",
+                "pregunta": "Importe medio de los artículos incluidos en la línea de pedido número 4, redondeado a 3 decimales.",
+                "queries": [
+                    "select round(avg(importe),3) PrecioMedio from linped where linea=4;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "018",
+                "pregunta": "Número de pedido, nombre, teléfono y email de usuario del pedido (o los pedidos) que contiene líneas de pedido cuyo importe unitario por artículo sea igual al importe más alto de entre todas las segundas líneas de todos los pedidos.",
+                "queries": [
+                    "select l.numPedido, nombre, telefono, email from usuario u, pedido p, linped l where l.numPedido=p.numPedido and p.usuario=u.email and importe=(select MAX(importe) from linped where linea=2);"
+                ],
+                "notas": [
+                    "Primero se ha de calcular el precio máximo de entre todas las segundas líneas (la subconsulta) y, entonces, ya se pueden comparar TODAS las líneas de pedido: saldrá, seguro, el pedido de esa segunda línea que da el máximo, pero ese precio máximo se puede repetir en cualquier otra línea."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "019",
+                "pregunta": "Diferencia entre el importe máximo y el importe mínimo del pedido número 30.",
+                "queries": [
+                    "select (MAX(importe)-MIN(importe)) DiferenciaPrecios from linped where numPedido=30;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "020",
+                "pregunta": "Código, nombre, importe del artículo que más hay en stock.",
+                "queries": [
+                    "select cod,nombre,pvp from articulo,stock where cod=articulo and disponible = (select MAX(disponible) from stock);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "021",
+                "pregunta": "Fecha de nacimiento del usuario más viejo.",
+                "queries": [
+                    "select MIN(nacido) from usuario;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "022",
+                "pregunta": "Obtener en una única consulta, cuántas filas tiene la tabla artículo, cuántas de ellas tienen valor en la columna marca y cuántas marcas distintas hay almacenadas en la tabla.",
+                "queries": [
+                    "select count(*) filas, count(marca) conmarca, count(distinct marca) marcas from articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "023",
+                "pregunta": "Código, nombre y marca del artículo más caro.",
+                "queries": [
+                    "select cod, nombre, marca from articulo where pvp = (select max(pvp) from articulo);",
+                    "select cod, nombre, marca from articulo where pvp >= all (select pvp from articulo);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "024",
+                "pregunta": "Código, nombre y pvp de la cámara más cara de entre las de tipo réflex.",
+                "queries": [
+                    "select a.cod, nombre, pvp from articulo a, camara c where a.cod=c.cod and tipo like '%reflex%' and pvp=(select max(pvp) from articulo a, camara c where a.cod=c.cod and tipo like '%reflex%');",
+                    "select a.cod, nombre, pvp from articulo a, camara c where a.cod=c.cod and tipo like'%réflex%' and pvp >= all (select pvp from articulo a, camara c where a.cod=c.cod and tipo like'%réflex%');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "025",
+                "pregunta": "Código, nombre y disponibilidad de los artículos con menor disponibilidad de entre los que pueden estar disponibles en 24 horas.",
+                "queries": [
+                    "select cod,nombre,disponible from stock, articulo where cod=articulo and entrega='24 horas' and disponible=(select min(disponible) from stock where entrega='24 horas');",
+                    "select cod, nombre, disponible from stock, articulo where cod=articulo and entrega ='24 horas' and disponible <=all (select disponible from stock where entrega='24 horas');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "026",
+                "pregunta": "Número de pedido y artículo con la línea de pedido de menor importe.",
+                "queries": [
+                    "select numpedido, articulo from linped where importe = (select min(importe) from linped);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "027",
+                "pregunta": "Líneas de pedido y número de pedido al que correspondan dichas líneas, y que incluyan más cantidad de artículos que las demás.",
+                "queries": [
+                    "select linea, numpedido from linped where cantidad = (select max(cantidad) from linped);",
+                    "select linea, numpedido from linped where cantidad >= all (select cantidad from linped);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "028",
+                "pregunta": "Líneas de pedido y nombre de los artículos que aparecen en esas líneas, si el importe de esas líneas no es el menor de todas las líneas conocidas.",
+                "queries": [
+                    "select distinct linea, nombre from articulo a, linped l where a.cod=l.articulo and importe > (select min(importe) from linped);",
+                    "select distinct linea, nombre from articulo a, linped l where a.cod=l.articulo and importe > any (select importe from linped);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "029",
+                "pregunta": "Nombre, precio y marca de los artículos con mayor disponibilidad de stock.",
+                "queries": [
+                    "select nombre, pvp, marca from articulo a, stock s where a.cod=s.articulo and s.disponible = (select max(disponible) from stock);",
+                    "select nombre, pvp, marca from articulo a, stock s where a.cod=s.articulo and s.disponible >=all (select disponible from stock);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "030",
+                "pregunta": "Nombre, precio y marca de los artículos que no tengan la mayor disponibilidad de stock.",
+                "queries": [
+                    "select nombre, pvp, marca from articulo a, stock s where a.cod=s.articulo and s.disponible <> (select max(disponible) from stock);",
+                    "select nombre, pvp, marca from articulo a, stock s where a.cod=s.articulo and s.disponible < any (select disponible from stock);"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 7 (T09)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "¿Cuántos artículos de cada marca hay?",
+                "queries": [
+                    "select marca,count(*) from articulo group by marca;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Número de cámaras que tienen sensor CMOS",
+                "queries": [
+                    "select count(*) from camara where sensor like '%CMOS%'"
+                ],
+                "notas": [
+                    "Si miramos la columna camara.sensor veremos que los valores son descripciones largas de texto que en alguna parte incluyen la cadena 'CMOS'."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "012",
+                "pregunta": "Ha habido un error en Tiendaonline y se han colado varios artículos sin stock, con cero unidades disponibles, en la cesta. Averigua el código de esos artículos y las veces que aparece cada uno en cesta.",
+                "queries": [
+                    "select c.articulo, count(*) from cesta c, stock s where c.articulo=s.articulo and disponible=0 group by c.articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "016",
+                "pregunta": "Cantidad de artículos con stock 0",
+                "queries": [
+                    "select count(*) from stock where disponible=0;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "017",
+                "pregunta": "Cantidad de artículos que no son ni memoria, ni tv, ni objetivo, ni cámara ni pack.",
+                "queries": [
+                    "select  count(*) from articulo where cod not in (select cod from camara) and cod not in (select cod from tv) and cod not in (select cod from memoria) and cod not in (select cod from objetivo) and cod not in (select cod from pack);",
+                    "select  count(*) from articulo where cod not in (select cod from camara union select cod from tv union select cod from memoria union select cod from objetivo union select cod from pack);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "021",
+                "pregunta": "Cantidad de líneas por cada pedido.",
+                "queries": [
+                    "select numpedido, count(*) from linped group by numpedido;"
+                ],
+                "notas": [
+                    "Contamos filas (count(*)) porque en la tabla LINPED, cada fila es una línea de pedido."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "022",
+                "pregunta": "Cantidad de líneas por cada pedido, eliminando aquellas filas con cantidades de artículo pedidas menores a 3.",
+                "queries": [
+                    "select numpedido, count(*) from linped where cantidad >= 3 group by numpedido;"
+                ],
+                "notas": [
+                    "Where filtra primero las filas a contar, y después se hace el cálculo."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "023",
+                "pregunta": "Para los pedidos anteriores a septiembre de 2010, cantidad de líneas por cada pedido.",
+                "queries": [
+                    "select l.numpedido, count(*) from linped l, pedido p where l.numpedido=p.numpedido and fecha < '2010-09-01' group by numpedido;"
+                ],
+                "notas": [
+                    "Where filtra primero las filas a contar, y después se hace el cálculo."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "024",
+                "pregunta": "Por cada artículo pedido, cantidad total de unidades pedidas.",
+                "queries": [
+                    "select articulo, sum(cantidad) from linped group by articulo;"
+                ],
+                "notas": [
+                    "Estamos sumando los valores almacenados en la columna LINPED.cantidad."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "025",
+                "pregunta": "Por cada artículo pedido, cantidad total de unidades pedidas y promedio de importe unitario.",
+                "queries": [
+                    "select articulo, sum(cantidad) cantidad, avg(importe) impmedio from linped group by articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "026",
+                "pregunta": "Para las cámaras pedidas, código de artículo, cantidad total de unidades pedidas y promedio de importe unitario.",
+                "queries": [
+                    "select articulo, sum(cantidad) cantidad, avg(importe) impmedio from linped where articulo in (select cod from camara) group by articulo;",
+                    "select l.articulo, sum(cantidad) cantidad, avg(importe) impmedio from linped l, camara c where l.articulo = c.cod group by articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "027",
+                "pregunta": "Para las cámaras pedidas, código, nombre, marca del artículo, y cantidad total de unidades pedidas y promedio de importe unitario.",
+                "queries": [
+                    "select l.articulo, a.nombre, a.marca, sum(cantidad) cantidad, avg(importe) impmedio from linped l, articulo a where l.articulo=a.cod and articulo in (select cod from camara) group by l.articulo, a.nombre, a.marca;"
+                ],
+                "notas": [
+                    "Todas las columnas que no sean una expresión de agregación deben aparecer en el group by."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "028",
+                "pregunta": "Para todo usuario cuyo primer apellido sea Martínez, comprobar si hay algún otro usuario con los mismos apellidos y nombre.",
+                "queries": [
+                    "select apellidos,nombre,count(*) from usuario where apellidos like 'Martínez%' group by apellidos,nombre;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "029",
+                "pregunta": "Por cada mes y año, cantidad de pedidos realizados.",
+                "queries": [
+                    "select month(fecha) mes, year(fecha) año, count(*) from pedido group by month(fecha), year(fecha);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "030",
+                "pregunta": "Para los artículos 'A0233' y 'A1085', código de artículo y cantidad de pedidos distintos en los que ha sido solicitado.",
+                "queries": [
+                    "select articulo, count(distinct numpedido) from linped where articulo in ('A0233','A1085') group by articulo;"
+                ],
+                "notas": [
+                    "Estamos obligados a utilizar count(distinct numpedido) porque un artículo puede aparecer en varias líneas del mismo pedido, como es el caso de los dos códigos de artículo exigidos."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "031 ",
+                "pregunta": "¿Cuántas veces se ha pedido cada artículo? Deben mostrarse todos los artículos, incluso los que no se han pedido nunca. La salida contendrá el código y nombre del artículo, junto con las veces que ha sido incluido en un pedido (solo si ha sido incluido, no se trata de la 'cantidad').",
+                "queries": [
+                    "select cod, nombre, count(numpedido) veces from articulo a left join linped l on (a.cod=l.articulo) group by cod, nombre;"
+                ],
+                "notas": [
+                    "Aquí no nos vale count(*). Contando filas, todos los artículos tendrían una cuenta de '1 o más filas'. Examina el resultado de 'select cod, nombre, numpedido from articulo a left join linped l on (a.cod=l.articulo)'. Cada uno de los artículos aparece al menos una vez.",
+                    "El 'truco' consiste en contar los números de pedido asociados a algunos artículos. El left join hace que ciertos artículos aparezcan una vez junto con NULL como numpedido. El resto de artículos aparecen tantas veces como líneas tengan en LINPED. Como count(numpedido) solo cuenta los valores distintos de NULL, por eso conseguimos que la cuenta sea 0 en los artículos no pedidos nunca."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "032",
+                "pregunta": "Por cada usuario, email y total de precio de venta al público acumulado en sus cestas actuales.",
+                "queries": [
+                    "select usuario,sum(pvp) from cesta c, articulo a where c.articulo=a.cod group by usuario;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "033",
+                "pregunta": "Por cada usuario, email y total de precio de venta al público acumulado en sus cestas actuales, eliminando previamente los artículos sin PVP, y ordenando de mayor a menor por ese total.",
+                "queries": [
+                    "select usuario,sum(pvp) total from cesta c, articulo a where c.articulo=a.cod and pvp is not null group by usuario order by total;"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 9 (T09B)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "¿Cuáles son las marcas (en la tabla ARTICULO) que tienen menos de 150 artículos?",
+                "queries": [
+                    "select marca,count(*) from articulo group by marca having count(*)<150;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "¿Cuáles son las marcas (en la tabla ARTICULO) que tienen menos de 150 artículos (eliminar las marcas que sean null)?",
+                "queries": [
+                    "select marca,count(*) from articulo where marca is not null group by marca having count(*)<150;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "Dni, nombre, apellidos y email de los usuarios que han realizado más de un pedido.",
+                "queries": [
+                    "select dni,nombre,apellidos,email from usuario U, pedido P where U.email=P.Usuario group by dni,nombre,apellidos,email having count(*)>1;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Pedidos (número de pedido y usuario) de importe mayor a 4000 euros.",
+                "queries": [
+                    "select p.numpedido,p.usuario from pedido p, linped l where p.numpedido=l.numpedido group by p.numpedido,p.usuario having sum(cantidad*importe)>4000;"
+                ],
+                "notas": [
+                    "Cuando nos piden el importe (total) de un pedido, se entiende que es el precio unitario de cada línea de ese pedido multiplicado por la cantidad pedida de ese artículo."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "007",
+                "pregunta": "Pedidos (número de pedido y usuario) con más de 10 artículos, mostrando esta cantidad.",
+                "queries": [
+                    "select P.numPedido,P.usuario, sum(cantidad) from pedido P, linped L where P.numPedido=L.numPedido group by P.numPedido,P.usuario having sum(cantidad)>10;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "008",
+                "pregunta": "Pedidos (número de pedido y usuario) que contengan más de cuatro artículos distintos.",
+                "queries": [
+                    "select P.numPedido,P.usuario, count(distinct articulo) from pedido P, linped L where P.numPedido=L.numPedido group by P.numPedido,P.usuario having count(distinct articulo)>4;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "009",
+                "pregunta": "¿Hay dos provincias que se llamen igual (con nombre repetido)?",
+                "queries": [
+                    "select nombre,count(*) from provincia group by nombre having count(*)>1;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "010",
+                "pregunta": "¿Hay algún pueblo con nombre repetido?",
+                "queries": [
+                    "select pueblo,count(*) from localidad group by pueblo having count(*)>1;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "011",
+                "pregunta": "Obtener el código y nombre de las provincias que tengan más de 100 pueblos.",
+                "queries": [
+                    "select P.codp,P.nombre,count(*) FROM provincia P, localidad L WHERE P.codp=L.provincia group by P.codp,P.nombre having count(*)>100;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "013",
+                "pregunta": "Clientes que hayan adquirido (pedido) más de 2 tv",
+                "queries": [
+                    "select p.usuario, sum(cantidad) from pedido p, linped l, tv where p.numpedido=l.numpedidoand l.articulo=tv.cod group by p.usuario having sum(cantidad)>2;"
+                ],
+                "notas": [
+                    "Hay que sumar la columna LINPED.cantidad porque es la que nos dice cuántas unidades de cada artículo se han pedido."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "015",
+                "pregunta": "Código y nombre de las provincias que tienen más de 50 usuarios (provincia del usuario, no de la dirección de envío).",
+                "queries": [
+                    "select p.codp, p.nombre from provincia p, usuario u where p.codp=u.provincia group by p.codp, p.nombre having count(email)>50;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "018",
+                "pregunta": "Número de artículos pedidos por provincia (provincia del usuario no de la dirección de envío). Mostrar el código de la provincia, su nombre y la cantidad de veces que se ha pedido el artículo; si la provincia no tiene asociada esta cantidad, mostrar '0' en esa columna.",
+                "queries": [
+                    "select pr.codp, pr.nombre, IFNULL(sum(cantidad),0) from provincia pr left join usuario u on (pr.codp=u.provincia) left join pedido p on (p.usuario=u.email) left join linped l on (p.numpedido=l.numpedido) group by pr.codp,pr.nombre;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "019",
+                "pregunta": "Código y nombre de los artículos que han sido solicitados en todos los pedidos del usuario acm@colegas.com.",
+                "queries": [
+                    "select cod,nombre from articulo a where cod in (select articulo from pedido p,linped l where usuario='acm@colegas.com' and p.numpedido=l.numpedido group by articulo having count(distinct p.numpedido) = (select count(*) from pedido where usuario='acm@colegas.com'));",
+                    "select cod,nombre from articulo a where not exists (select 1 from pedido p where usuario='acm@colegas.com' and not exists (select 1 from linped l where l.numpedido=p.numpedido and l.articulo=a.cod));",
+                    "select articulo,nombre from articulo a, pedido p,linped l where usuario='acm@colegas.com' and p.numpedido=l.numpedido and l.articulo=a.cod group by articulo,nombre having count(distinct p.numpedido) = (select count(*) from pedido where usuario='acm@colegas.com');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "020",
+                "pregunta": "¿Cuáles son las marcas que tienen menos de 150 artículos?",
+                "queries": [
+                    "select m.marca,count(a.marca) from marca m LEFT JOIN articulo a on m.marca=a.marca group by marca having count(a.marca)<150;"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 10 (T11)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "Listado de los códigos de los artículos Samsung que han sido pedidos.",
+                "queries": [
+                    "SELECT a.cod FROM articulo a WHERE marca = 'Samsung' AND cod IN (SELECT articulo FROM linped);",
+                    "SELECT a.cod FROM articulo a WHERE marca = 'Samsung' AND EXISTS (SELECT 1 FROM linped l WHERE a.cod = l.articulo);",
+                    "SELECT DISTINCT a.cod FROM articulo a, linped l WHERE a.cod = articulo AND marca = 'Samsung';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "Utilizando operadores de conjuntos obtener los nombres de los artículos que sean cámaras compactas con visor electrónico o televisores CRT.",
+                "queries": [
+                    "SELECT nombre FROM camara c, articulo a WHERE c.cod = a.cod and tipo LIKE '%compacta%visor%electrónico%' UNION SELECT nombre FROM tv t,articulo a WHERE t.cod = a.cod and panel LIKE '%televisor%CRT%';",
+                    "SELECT nombre FROM camara c JOIN articulo a ON (c.cod = a.cod) WHERE tipo LIKE '%compacta%visor%electrónico%' UNION SELECT nombre FROM tv t JOIN articulo a ON (t.cod = a.cod) WHERE panel LIKE '%televisor%CRT%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "Utilizando operadores de conjuntos obtener el nombre de los usuarios, la localidad y la provincia de los usuarios que sean de un pueblo que contenga 'San Vicente' o que sean de la provincia de 'Valencia'.",
+                "queries": [
+                    "SELECT u.nombre, p.nombre, l.pueblo FROM usuario u, localidad l, provincia p WHERE u.pueblo = l.codm and u.provincia = l.provincia and l.provincia = p.codp and l.pueblo LIKE '%San Vicente%' UNION SELECT u.nombre, p.nombre, l.pueblo FROM usuario u, localidad l, provincia p WHERE u.pueblo = l.codm AND u.provincia = l.provincia and l.provincia = p.codp and p.nombre LIKE '%Valencia%';",
+                    "SELECT u.nombre, p.nombre, l.pueblo FROM usuario u JOIN localidad l ON (u.pueblo = l.codm AND u.provincia = l.provincia) JOIN provincia p ON l.provincia = p.codp WHERE l.pueblo LIKE '%San Vicente%' UNION SELECT u.nombre, p.nombre, l.pueblo FROM usuario u JOIN localidad l ON (u.pueblo = l.codm AND u.provincia = l.provincia) JOIN provincia p ON l.provincia = p.codp WHERE p.nombre LIKE '%Valencia%';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Nombre y email de los usuarios de Asturias que tengan la misma dirección de envió que de residencia (que no tengan dirección de envío).",
+                "queries": [
+                    "SELECT u.nombre, email FROM usuario u, provincia p WHERE u.provincia = codp AND p.nombre = 'Asturias' AND email NOT IN (SELECT email FROM direnvio);",
+                    "SELECT u.nombre, email FROM usuario u JOIN provincia p ON (u.provincia = codp) WHERE p.nombre = 'Asturias' AND email NOT IN (SELECT email FROM direnvio);"
+                ],
+                "notas": [
+                    "En realidad habría que comparar también dirección de residencia y dirección de envío de aquellos que sí la tienen pero lo dejamos simplemente en que 'no tienen dirección de envío'."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "Código, nombre y marca de los objetivos con focales de 500 o 600 mm para las marcas de las que no se ha solicitó ningún artículo en el mes de noviembre de 2010.",
+                "queries": [
+                    "SELECT a.cod, nombre, marca FROM objetivo o, articulo a WHERE a.cod = o.cod AND (focal = '500 mm' OR focal = '600 mm') AND marca NOT IN (SELECT marca FROM pedido p, linped l, articulo where p.numpedido=l.numpedido and articulo= cod and year(fecha)='2010' and month(fecha)='11');"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Código y pvp de los artículos 'Samsung' que tengan pvp y que no tengan pedidos.",
+                "queries": [
+                    "SELECT a.cod, pvp FROM articulo a WHERE marca = 'Samsung' AND pvp IS NOT NULL AND a.cod NOT IN (select articulo from linped);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "007",
+                "pregunta": "Utilizando operadores de conjuntos, muestra los nombres de los artículos que estén en un pack.",
+                "queries": [
+                    "SELECT nombre FROM articulo WHERE cod IN (SELECT articulo FROM ptienea);",
+                    "SELECT nombre FROM articulo WHERE EXISTS (SELECT 1 FROM ptienea WHERE cod = articulo);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "008",
+                "pregunta": "Utilizando el producto cartesiano, obtener los nombres de las localidades con 2 o más usuarios (sin usar group by).",
+                "queries": [
+                    "SELECT distinct l.pueblo FROM usuario u1, usuario u2, localidad l WHERE u1.email != u2.email AND u1.pueblo = u2.pueblo AND u1.provincia = u2.provincia AND u1.pueblo=l.codm AND u1.provincia=l.provincia;",
+                    "SELECT l.pueblo FROM localidad l, usuario u WHERE u.pueblo = l.codm AND u.provincia=l.provincia GROUP BY l.codm, l.provincia, l.pueblo HAVING COUNT(*) >= 2;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "009",
+                "pregunta": "Los códigos de los artículos que están en stock, en la cesta y han sido pedidos.",
+                "queries": [
+                    "SELECT DISTINCT s.articulo FROM stock s, cesta c, linped l WHERE s.articulo = c.articulo AND s.articulo = l.articulo;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "010",
+                "pregunta": "Código y nombre de los artículos, aunque estén repetidos, que aparezcan en un pack o en una cesta.",
+                "queries": [
+                    "SELECT p.articulo, a.nombre FROM ptienea p, articulo a WHERE p.articulo = a.cod UNION ALL SELECT c.articulo, a.nombre FROM cesta c, articulo a WHERE c.articulo = a.cod;",
+                    "SELECT p.articulo, a.nombre FROM ptienea p JOIN articulo a ON (p.articulo = a.cod) UNION ALL SELECT c.articulo, a.nombre FROM cesta c JOIN articulo a ON (c.articulo = a.cod);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "011",
+                "pregunta": "Códigos de artículos que están en alguna cesta o en alguna línea de pedido.",
+                "queries": [
+                    "select  articulo from cesta union select  articulo from linped;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "012",
+                "pregunta": "Email y nombre de los usuarios que no han hecho ningún pedido o que han hecho sólo uno.",
+                "queries": [
+                    "select email, nombre from usuario where email not in (select usuario from pedido) union select email, nombre from usuario, pedido where email=usuario group by email, nombre having count(*)=1;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "013",
+                "pregunta": "Apellidos que se repitan en más de un usuario (sin utilizar group by).",
+                "queries": [
+                    "select distinct u1.apellidos from usuario u1, usuario u2 where u1.email <> u2.email and u1.apellidos= u2.apellidos;",
+                    "select apellidos from usuario group by apellidos having count(*) > 1;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "014",
+                "pregunta": "Parejas de nombres de provincia que tienen algún pueblo que se llama igual, junto con el nombre del pueblo.",
+                "queries": [
+                    "select p1.nombre, p2.nombre, l1.pueblo from provincia p1, provincia p2, localidad l1, localidad l2 where p1.codp<>p2.codp and p1.codp=l1.provincia and p2.codp=l2.provincia and l1.pueblo=l2.pueblo;"
+                ],
+                "notas": [
+                    "Observad lo que tarda en realizar la consulta comparado con otras."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "015",
+                "pregunta": "Código y nombre de los artículos que en stock están 'Descatalogado' o que no se han solicitado en ningún pedido.",
+                "queries": [
+                    "select cod, nombre from articulo where cod in(select articulo from stock where entrega='Descatalogado' union select cod from articulo where cod not in (select articulo from linped));"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "016",
+                "pregunta": "Email, nombre y apellidos de los usuarios que han solicitado televisores pero nunca han solicitado cámaras.",
+                "queries": [
+                    "select email, nombre, apellidos from usuario where email in (select usuario from pedido p, linped l, tv where p.numpedido=l.numpedido and articulo=cod) and email not in (select usuario from pedido p, linped l, camara where p.numpedido=l.numpedido and articulo=cod);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "017",
+                "pregunta": "Usuarios que han solicitado pedidos de coste total superior a 10000 (por pedido) o que han solicitado más de 5 artículos distintos entre todos sus pedidos.",
+                "queries": [
+                    "select usuario from linped l, pedido p where l.numpedido=p.numpedido group by p.numpedido, usuario having sum(cantidad*importe)>10000 union select usuario from linped l, pedido p where l.numpedido=p.numpedido group by usuario having count(distinct articulo)>5;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "018",
+                "pregunta": "Obtener un listado en el que figuren para todos los usuarios: su email, su nombre y sus apellidos junto con una frase en la que se muestre lo que a continuación se indica:\n- para los usuarios con un coste total entre todos sus pedidos superior a 10000 mostraremos GRAN CLIENTE\n- para los que el coste total está entre 6000 y 10000 mostraremos CLIENTE MEDIO\n- para los que el coste total es inferior a 6000 mostraremos COMPRA POCO\n- para los que no han hecho ningún pedido mostraremos ** NO HA COMPRADO NUNCA.\n\nEl listado se ordenará por apellidos.",
+                "queries": [
+                    "select email, nombre, apellidos, '  GRAN CLIENTE' from usuario, linped l, pedido p where l.numpedido=p.numpedido and p.usuario=email group by email, nombre, apellidos having sum(cantidad*importe)>10000 UNION select email, nombre, apellidos, '  CLIENTE MEDIO' from usuario, linped l, pedido p where l.numpedido=p.numpedido and p.usuario=email group by email, nombre, apellidos having sum(cantidad*importe) between 6000 and 10000 UNION select email, nombre, apellidos, '  COMPRA POCO' from usuario, linped l, pedido p where l.numpedido=p.numpedido and p.usuario=email group by email, nombre, apellidos having sum(cantidad*importe)<6000 UNION select email, nombre, apellidos, '  ** NO HA COMPRADO NUNCA' from usuario where email not in (select usuario from pedido) order by 3;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "019",
+                "pregunta": "¿Hay alguna fila en la tabla marca?",
+                "queries": [
+                    "select exists (select * from marca);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "020",
+                "pregunta": "Email y nombre de los usuarios que no han pedido ninguna cámara.",
+                "queries": [
+                    "select email, nombre from usuario u where email not in (select usuario from linped l, pedido p, camara c where l.numpedido=p.numpedido and l.articulo = c.cod);",
+                    "select email, nombre from usuario u where not exists (select 1 from linped l, pedido p, camara c where email=p.usuario and l.numpedido=p.numpedido and c.cod=l.articulo);"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "021",
+                "pregunta": "Email y nombre de los usuarios que, habiendo realizado algún pedido, no han pedido ninguna cámara.",
+                "queries": [
+                    "select email, nombre from usuario u where email in (select usuario from pedido) and email not in (select usuario from linped l, pedido p, camara c where l.numpedido=p.numpedido and l.articulo = c.cod);",
+                    "select email, nombre from usuario u where email in (select usuario from pedido) and not exists (select 1 from linped l, pedido p, camara c where email=p.usuario and l.numpedido=p.numpedido and c.cod=l.articulo);"
+                ],
+                "notas": [
+                    "Obsérvese el uso de usuario.email en la subconsulta del exists."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "022",
+                "pregunta": "Código y nombre del artículo que ha sido incluído en todos los pedidos.",
+                "queries": [
+                    "select cod,nombre from articulo a where not exists (select 1 from pedido pwhere not exists (select 1 from linped l where l.numpedido=p.numpedido and l.articulo=a.cod));",
+                    "select articulo from linped l group by articulo having count(distinct numpedido) = (select count(*) from pedido); "
+                ],
+                "notas": [
+                    "Artículo tal que NO existe pedido que NO lo incluya"
+                ]
+            },
+            {
+                "superada": false,
+                "num": "024",
+                "pregunta": "Código y nombre del artículo que ha sido incluído en todos los pedidos.",
+                "queries": [
+                    "select 'sí' respuesta from dual where exists (select 1 from marca);"
+                ],
+                "notas": [
+                    "'Dual' es una tabla ficticia del sistema que sirve precisamente para esto, para consultas que no utilizan ninguna tabla."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "025",
+                "pregunta": "¿Hay alguna fila en la tabla memoria? Si la respuesta es negativa, que muestre la palabra 'no'.",
+                "queries": [
+                    "select 'no' respuesta from dual where not exists (select 1 from memoria);"
+                ],
+                "notas": [
+                    "'Dual' es una tabla ficticia del sistema que sirve precisamente para esto, para consultas que no utilizan ninguna tabla."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "026",
+                "pregunta": "¿Hay alguna fila en la tabla memoria? Si la respuesta es negativa, que muestre la palabra 'no'.",
+                "queries": [
+                    "select * from pedido p where numpedido in (select numpedido from linped l, camara c where l.articulo=c.cod) and numpedido in (select numpedido from linped l, tv where l.articulo=tv.cod);",
+                    "select * from pedido p where exists (select 1 from linped l where l.numpedido=p.numpedido and articulo in (select cod from tv)) and exists (select 1 from linped l where l.numpedido=p.numpedido and articulo in (select cod from camara));"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "027",
+                "pregunta": "Pedidos (sin duplicados) que incluyen cámaras y objetivos.",
+                "queries": [
+                    "select * from pedido p where numpedido in (select numpedido from linped l, camara c where l.articulo=c.cod) and numpedido in (select numpedido from linped l, objetivo o where l.articulo=o.cod);",
+                    "select * from pedido p where exists (select 1 from linped l where l.numpedido=p.numpedido and articulo in (select cod from camara)) and exists (select 1 from linped l where l.numpedido=p.numpedido and articulo in (select cod from objetivo));"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "028",
+                "pregunta": "Concatenación natural de artículos y memorias.",
+                "queries": [
+                    "select * from articulo natural join memoria;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "029",
+                "pregunta": "Código de artículo, nombre, pvp, marca y tipo de la concatenación natural de artículos y memorias.",
+                "queries": [
+                    "select cod,nombre,pvp,marca,tipo from articulo natural join memoria;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "030",
+                "pregunta": "Código de artículo, nombre, pvp, marca y tipo de la concatenación natural de artículos y memorias, si el tipo es 'Compact Flash'.",
+                "queries": [
+                    "select cod,nombre,pvp,marca,tipo from articulo natural join memoria where tipo='Compact Flash';",
+                    "select a.cod,a.nombre,a.pvp,a.marca,m.tipo from articulo a, memoria m where a.cod=m.cod and tipo='Compact Flash';"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "031",
+                "pregunta": "Concatenación natural de pedido y linped, ordenado por fecha de pedido.",
+                "queries": [
+                    "select * from pedido natural join linped order by fecha;",
+                    "select * from pedido natural join linped order by fecha;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "032",
+                "pregunta": "Comprueba que la concatenación natural de cesta y pack produce un producto cartesiano.",
+                "queries": [
+                    "select * from cesta natural join pack;",
+                    "select * from cesta, pack;"
+                ],
+                "notas": [
+                    "En CESTA se utiliza el nombre de columna 'articulo' mientras que en pack se utiliza 'cod': no hay columnas comunes."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "034",
+                "pregunta": "¿Por qué la concatenación natural de usuario y direnvio resulta en una tabla vacía?",
+                "queries": [
+                    "select * from usuario natural join direnvio;"
+                ],
+                "notas": []
+            }
+        ]
+    },
+    {
+        "titulo": "Sesión 11 (T12)",
+        "preguntas": [
+            {
+                "superada": false,
+                "num": "001",
+                "pregunta": "Días que han pasado entre el primer y último pedido.",
+                "queries": [
+                    "select datediff((select max(fecha) from pedido), (select min(fecha) from pedido)) dias;",
+                    "select datediff(max(fecha), min(fecha)) dias from pedido;"
+                ],
+                "notas": [
+                    "Las dos queries hacen lo mismo."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "002",
+                "pregunta": "Calcula y muestra la cantidad de televisores, cámaras y objetivos almacenados en la base de datos.",
+                "queries": [
+                    "select (select count(*) from tv) tv, (select count(*) from camara) camaras,(select count(*) from objetivo) objetivos;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "003",
+                "pregunta": "Calcula y muestra los porcentajes, sobre el total de artículos almacenados en la base de datos, de televisores, cámaras y objetivos.",
+                "queries": [
+                    "select (select count(*) from tv)/(select count(*) from articulo)*100 tvPC,(select count(*) from camara)/(select count(*) from articulo)*100 camarasPC,(select count(*) from objetivo)/(select count(*) from articulo)*100 objetivosPC;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "004",
+                "pregunta": "Email, nombre y apellidos de los usuarios de la provincia 03, y si tienen un pedido cuyo importe total sea mayor que 10000?, mostrar también el número de pedido y ese importe; ordena la salida descendentemente por el valor del pedido. Comienza resolviendo número de pedido, usuario e importe total de los pedidos valorados en más de 10000? y utiliza el resultado como tabla temporal.",
+                "queries": [
+                    "select email,nombre, apellidos,numpedido, valor from usuario u left join (select p.numpedido,usuario, sum(cantidad*importe) valor from pedido p, linped l where p.numpedido=l.numpedido group by numpedido,usuario having sum(cantidad*importe)>10000) calculo on (email=usuario) where provincia='03' order by valor desc;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "005",
+                "pregunta": "De los usuarios que tengan algún pedido sin líneas de pedido y artículos pendientes de solicitud en alguna cesta, mostrar su email, nombre, apellidos, número del pedido sin líneas, y valor total de su cesta. Comienza resolviendo pedidos sin líneas y valor de la cesta por usuario y utiliza los resultados como tablas temporales.",
+                "queries": [
+                    "select email,nombre, apellidos,numpedido, pendiente from usuario u, (select numpedido,usuario from pedido where numpedido not in (select numpedido from linped)) pedidos, (select usuario,sum(pvp) pendiente from cesta c, articulo a where c.articulo=a.cod group by usuario) cestas where email=pedidos.usuario and email=cestas.usuario;"
+                ],
+                "notas": [
+                    "Date cuenta que el último where utiliza columnas de las tablas temporales."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "006",
+                "pregunta": "Para aquellos usuarios que tengan más de un pedido en 2010, obtener una tabla donde cada columna se corresponda con un mes del año y muestre la cantidad de pedidos realizada por ese usuario en ese mes. Cada fila empieza por el email, nombre y apellidos del usuario.",
+                "queries": [
+                    "select * from (select email,nombre,apellidos, (select count(*) from pedido where month(fecha)=1 and year(fecha)=2010 and usuario=email) enero,(select count(*) from pedido where month(fecha)=2 and year(fecha)=2010 and usuario=email) febrero, (select count(*) from pedido where month(fecha)=3 and year(fecha)=2010 and usuario=email) marzo, (select count(*) from pedido where month(fecha)=4 and year(fecha)=2010 and usuario=email) abril, (select count(*) from pedido where month(fecha)=5 and year(fecha)=2010 and usuario=email) mayo,(select count(*) from pedido where month(fecha)=6 and year(fecha)=2010 and usuario=email) junio, (select count(*) from pedido where month(fecha)=7 and year(fecha)=2010 and usuario=email) julio,(select count(*) from pedido where month(fecha)=8 and year(fecha)=2010 and usuario=email) agosto,(select count(*) from pedido where month(fecha)=9 and year(fecha)=2010 and usuario=email) septiembre, (select count(*) from pedido where month(fecha)=10 and year(fecha)=2010 and usuario=email) octubre,(select count(*) from pedido where month(fecha)=11 and year(fecha)=2010 and usuario=email) noviembre, (select count(*) from pedido where month(fecha)=12 and year(fecha)=2010 and usuario=email) diciembre from usuario) pormeses where enero+febrero+marzo+abril+mayo+junio+julio+agosto+septiembre+octubre+noviembre+diciembre > 1;",
+                    "select email,nombre,apellidos, (select count(*) from pedido where month(fecha)=1 and year(fecha)=2010 and usuario=email) enero,(select count(*) from pedido where month(fecha)=2 and year(fecha)=2010 and usuario=email) febrero, (select count(*) from pedido where month(fecha)=3 and year(fecha)=2010 and usuario=email) marzo, (select count(*) from pedido where month(fecha)=4 and year(fecha)=2010 and usuario=email) abril, (select count(*) from pedido where month(fecha)=5 and year(fecha)=2010 and usuario=email) mayo,(select count(*) from pedido where month(fecha)=6 and year(fecha)=2010 and usuario=email) junio, (select count(*) from pedido where month(fecha)=7 and year(fecha)=2010 and usuario=email) julio,(select count(*) from pedido where month(fecha)=8 and year(fecha)=2010 and usuario=email) agosto,(select count(*) from pedido where month(fecha)=9 and year(fecha)=2010 and usuario=email) septiembre, (select count(*) from pedido where month(fecha)=10 and year(fecha)=2010 and usuario=email) octubre,(select count(*) from pedido where month(fecha)=11 and year(fecha)=2010 and usuario=email) noviembre, (select count(*) from pedido where month(fecha)=12 and year(fecha)=2010 and usuario=email) diciembre from usuario where email in (select usuario from pedido group by usuario having count(*) > 1);"
+                ],
+                "notas": [
+                    "Las dos soluciones son válidas."
+                ]
+            },
+            {
+                "superada": false,
+                "num": "007",
+                "pregunta": "Provincias y cantidad de pedidos servidos en ellas, para aquellas provincias con un promedio de importe total de sus pedidos por encima de 2500 ?",
+                "queries": [
+                    "select provincia,count(*) pedidos from usuario u,(select usuario,p.numpedido,sum(importe*cantidad) total from pedido p join linped l on (p.numpedido=l.numpedido) group by usuario,numpedido) pd where u.email=pd.usuario group by provincia having avg(total)>2500;"
+                ],
+                "notas": []
+            },
+            {
+                "superada": false,
+                "num": "008",
+                "pregunta": "Nombre de las localidades de los usuarios que han hecho 2 pedidos o más. Elimina duplicados.",
+                "queries": [
+                    "select distinct l.pueblo from usuario u, localidad l where u.pueblo = l.codm and u.provincia=l.provincia and email in (select usuario from pedido p group by usuario having count(*)>=2);",
+                    "select distinct l.pueblo from usuario u, localidad l, (select usuario from pedido p group by usuario having count(*)>=2) pp where u.pueblo = l.codm and u.provincia=l.provincia and pp.usuario=u.email;"
+                ],
+                "notas": [
+                    "Las dos soluciones son válidas."
+                ]
+            }
+        ]
+    }
+]
