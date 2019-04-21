@@ -24,4 +24,5 @@ El mecanismo del programa es el siguiente:
 El ejecutable .jar junto con el config.json se encuentran en la raíz del repositorio.
 
 Codigo del programa en: src/ua/it/fbd/rtsqld
+
 Por ultimo si detectas algún problema en el programa avisa y se arreglará.
