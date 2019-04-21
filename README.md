@@ -2,7 +2,7 @@
 rtsqld (Road To SQL-D) es un programa para practicar todas las consultas sql de los ejercicios de las sesiones de practicas.
 
 IMPORTANTE:
-Para que pueda funcionar el programa debes descargar el ejecutable junto con el fichero config.json, 
+Para que pueda funcionar el programa debes descargarlo (el ejecutable) junto con el fichero config.json, 
 en este fichero debes escribir tal y como indica, todos los datos necesarios para que se pueda conectar
 a la db, el fichero debe encontrarse en la misma carpeta que el ejecutable .jar.
 
@@ -21,6 +21,6 @@ El mecanismo del programa es el siguiente:
 - Puedes saltar una pregunta en cualquier momento y se te mostrará otra aleatoria.
 - Puedes practicar tantas veces que quieras.
 
-El ejecutable .jar junto con el config.json se encuentran en la raiza del repositorio.
+El ejecutable .jar junto con el config.json se encuentran en la raíz del repositorio.
 
 Por ultimo si detectas algún problema en el programa avisa y se arreglará.
